@@ -1,7 +1,7 @@
 var countryFunctions = window.countryFunctions || {};
-var allCountries = window.allCountries|| {};
+var allCountries = window.allCountries || {};
 
-countryFunctions.getAllCountries = function getAllCountries (api) {
+countryFunctions.getAllCountries = function getAllCountries(api) {
     var request = new XMLHttpRequest();
 
     request.open('GET', api, true);
@@ -23,11 +23,11 @@ countryFunctions.getAllCountries = function getAllCountries (api) {
     request.send();
 };
 
-countryFunctions.renderCountry = function renderCountry (data) {
+countryFunctions.renderCountry = function renderCountry(data) {
     var feedDiv = document.querySelector('.feed');
     if (data.length) {
         data.forEach(function (country, index) {
-           var name = country.name;
+            var name = country.name;
             var flag = country.flag;
 
             var article = document.createElement('article');
@@ -61,8 +61,8 @@ countryFunctions.renderCountry = function renderCountry (data) {
             name.setAttribute('class', 'title title--thumbnail');
             center.appendChild(name);
 
-            if (index > 250) {
-                throw Error;
+            if (index > 11) {
+                article.classList.add('hidden');
             }
         });
     }
@@ -70,6 +70,22 @@ countryFunctions.renderCountry = function renderCountry (data) {
 
 (function () {
     var countriesApi = 'https://restcountries.eu/rest/v2/all';
+    var showMore = document.querySelector('#show-more');
+    var moreToRender = 12;
+
+    showMore.addEventListener('click', function () {
+        var feed = document.querySelector('.feed');
+        var allDivsToRender = feed.childNodes;
+
+        allDivsToRender.forEach(function (child) {
+            if (child.classList && child.classList.contains('hidden') && moreToRender) {
+                child.classList.remove('hidden');
+                moreToRender--;
+            }
+        });
+        moreToRender = 12;
+    });
 
     countryFunctions.getAllCountries(countriesApi);
+
 })();
