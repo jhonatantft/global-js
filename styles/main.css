@@ -30,14 +30,14 @@ section.content {
     clear: both;
 }
 
-.feed .project {
+.feed .country {
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.feed .project .thumb {
+.feed .country .thumb {
     overflow: hidden;
 }
 
@@ -144,6 +144,25 @@ img {
 
 .brick>a {
     display: block;
+}
+
+.no-touch .feed a:hover .thumb {
+    opacity: 0;
+    -ms-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2)
+}
+
+.no-touch .feed .country a:hover .thumbnail-title-wrap {
+    opacity: 1;
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1)
+}
+
+a:hover, a:active {
+    color: #111;
+    text-decoration: none;
 }
 
 @media only screen and (min-width: 600px) {

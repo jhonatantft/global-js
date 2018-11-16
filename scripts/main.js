@@ -31,8 +31,8 @@ countryFunctions.renderCountry = function renderCountry(data) {
             var flag = country.flag;
 
             var article = document.createElement('article');
-            article.setAttribute('class', 'project project--254515 brick cf brick--show');
-            article.setAttribute('id', 'project-254515');
+            article.setAttribute('class', 'country brick cf brick--show');
+            article.setAttribute('id', 'country--' + name.split(' ').join(''))    ;
             feedDiv.appendChild(article);
 
             var link = document.createElement('a');
@@ -57,9 +57,10 @@ countryFunctions.renderCountry = function renderCountry(data) {
             center.setAttribute('class', 'center');
             thumbTitle.appendChild(center);
 
-            var name = document.createElement('div');
-            name.setAttribute('class', 'title title--thumbnail');
-            center.appendChild(name);
+            var nameDiv = document.createElement('div');
+            nameDiv.setAttribute('class', 'title title--thumbnail');
+            nameDiv.innerHTML = name;
+            center.appendChild(nameDiv);
 
             if (index > 11) {
                 article.classList.add('hidden');
